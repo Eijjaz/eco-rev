@@ -8,4 +8,21 @@
     tools:context=".ContentView"
     tools:showIn="@layout/activity_content_view">
 
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+        <LinearLayout
+            android:id="@+id/contentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--/*Theme 1.1-->
+        </LinearLayout>
+
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>

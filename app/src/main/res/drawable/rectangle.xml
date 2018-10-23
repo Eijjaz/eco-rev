@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-</selector>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/listview_background_shape">
+
+    <padding android:left="2dp"
+        android:top="2dp"
+        android:right="2dp"
+        android:bottom="2dp" />
+    <corners android:radius="15dp"
+        android:bottomRightRadius="0dp"
+        android:bottomLeftRadius="0dp"/>
+    <solid
+        android:id="@+id/colorRect"
+        android:color="#009688"
+        />
+
+</shape>

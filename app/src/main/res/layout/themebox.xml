@@ -1,6 +1,94 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:showIn="@layout/activity_main" >
+    <LinearLayout
+        android:id="@+id/theme1layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+
+    <RelativeLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+
+        <View
+            android:id="@+id/myRectangleView"
+            android:layout_width="350dp"
+            android:layout_height="150dp"
+
+            android:background="@drawable/rectangle"
+
+            android:layout_gravity="center">
+        </View>
+
+        <!--<ImageView-->
+        <!--android:id="@+id/theme1Img"-->
+        <!--android:layout_width="300dp"-->
+        <!--android:layout_height="240dp"-->
+        <!--android:src="@drawable/loss1"-->
+        <!--android:background="@drawable/rectangle"-->
+        <!--/>-->
+        <TextView
+            android:id="@+id/titleBox"
+            android:layout_marginLeft="18dp"
+            android:layout_width="260dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="7dp"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            />
+        <TextView
+            android:id="@+id/subtitleBox"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="18dp"
+            android:layout_width="300dp"
+            android:layout_height="110dp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            />
+    </RelativeLayout>
+    <!--middle image -->
+    <ImageView
+        android:id="@+id/themeImg"
+        android:layout_width="wrap_content"
+        android:layout_height="282dp"
+        android:layout_gravity="center"
+        />
+
+    <!--bottom rectengle-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="37px"
+        >
+
+
+        <View
+            android:id="@+id/bottomRec"
+            android:layout_width="350dp"
+            android:layout_height="150dp"
+            android:background="@drawable/rectanglebottom"
+            android:layout_gravity="center">
+        </View>
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_marginLeft="18dp"
+            android:layout_width="315dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="7dp"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            />
+
+    </RelativeLayout>
+    </LinearLayout>
+</FrameLayout>
