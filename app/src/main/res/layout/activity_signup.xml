@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Signup">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+        <EditText
+            android:id="@+id/NewUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.295"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="338dp"
+            android:hint="New Username"
+            android:padding="8.5dp"
+            android:background="@drawable/rectangleinput"/>
+
+            <EditText
+                android:id="@+id/NewPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.295"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="338dp"
+                android:hint="New Password"
+                android:padding="8.5dp"
+                android:background="@drawable/rectangleinput"/>
+
+            <EditText
+                android:id="@+id/ConfirmPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.295"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="338dp"
+                android:hint="Confirm password"
+                android:padding="8.5dp"
+                android:background="@drawable/rectangleinput"/>
+
+
+            <Button
+                android:id="@+id/ButtonSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign Up" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
