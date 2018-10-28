@@ -11,18 +11,39 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class userledger {
-    public Map<String, String> users;
+    public List<user> users;
+
     public String filename;
     public userledger (){}
+    public Context context;
 
     public userledger(String _filename, Context context){
-        users = new HashMap<String,String>();
-
+        users = new ArrayList<user>();
         filename = _filename;
+
+    }
+
+    public boolean checkusers(String username, String password){
+        for (user u :
+                users) {
+           return u.checkuserpassword(username,password);
+        }
+        return false;
+    }
+
+    public void createuser(user u)
+    {
+        users.add(u);
+    }
+
+    public void readdatabase()
+    {
         File file = new File(filename);
         //Read text from file
         StringBuilder text = new StringBuilder();
@@ -36,7 +57,10 @@ public class userledger {
 
             while ((mline = reader.readLine()) != null) {
                 String [] lines = mline.split(",");
-                users.put(lines[0],lines[1]);
+
+                user u = new user(Integer.parseInt(lines[0]),lines[1],lines[2],lines[3],"");
+                users.add(u);
+                //users.put(lines[0],lines[1]);
 
             }
 
@@ -45,22 +69,6 @@ public class userledger {
             Log.d("CREATION",e.getMessage());
             //You'll need to add proper error handling here
         }
-
-    }
-
-    public boolean checkusers(String username, String password){
-       String val =  users.get(username);
-      if (val != null && val.equals(password)){
-
-         return true;
-
-      }
-        return false;
-    }
-
-    public void createuser(String Username, String Password)
-    {
-        users.put(Username,Password);
     }
 
 }
