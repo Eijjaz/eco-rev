@@ -35,8 +35,10 @@ public class LogInActivity extends AppCompatActivity {
                 //if (Usernametb.getText().toString().equals("cyberqid") && Passwordtb.getText().toString().equals("zaq190op"))
                 if (ul.checkusers(Usernametb.getText().toString(), Passwordtb.getText().toString()))
                 {
-                    Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_LONG).show();
+                    user currentUser = ul.getuser(Usernametb.getText().toString());
+                    Toast.makeText(getApplicationContext(), "Success! Welcome " + currentUser.username, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(LogInActivity.this,MainActivity.class);
+                    intent.putExtra("currUser",currentUser);
                     startActivity(intent);
 
                 }

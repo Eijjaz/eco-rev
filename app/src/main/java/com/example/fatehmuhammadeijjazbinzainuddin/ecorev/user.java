@@ -1,12 +1,17 @@
 package com.example.fatehmuhammadeijjazbinzainuddin.ecorev;
 
-public class user {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class user implements Parcelable {
     public String username;
     public String password;
     public String emailaddress;
     public int ID;
     public String picture;
-
+    public quizscore marks;
 //constructor
     public user()
     {
@@ -18,13 +23,14 @@ public class user {
     }
 
 //overload constructor
-    public user(int _id,String _username,String _password,String _emailaddress,String _picture)
+    public user(int _id,String _username,String _password,String _emailaddress,String _picture, quizscore q)
     {
         ID = _id;
         username = _username;
         password = _password;
         emailaddress = _emailaddress;
         picture = _picture;
+        marks = q;
     }
 //methods
     public void changename(String _newusername)
@@ -50,5 +56,40 @@ public class user {
             return true;
         else
             return false;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+//        public String username;
+//        public String password;
+//        public String emailaddress;
+//        public int ID;
+//        public String picture;
+//        public quizscore marks;
+        dest.writeString(username);
+        dest.writeString(password);
+        dest.writeString(emailaddress);
+        dest.writeInt(ID);
+
+    }
+
+    public static final Parcelable.Creator<user> CREATOR = new Parcelable.Creator<user>() {
+        public user createFromParcel(Parcel in) {
+            return new user(in);
+        }
+
+        public user[] newArray(int size) {
+            return new user[size];
+        }
+    };
+
+    private user(Parcel in) {
+        username = in.readString();
+        password = in.readString();
     }
 }
