@@ -17,11 +17,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class Theme2Activity extends AppCompatActivity {
+    public user currUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_theme2);
-
+        currUser = (user)getIntent().getParcelableExtra("currUser");
         LinearLayout ly = (LinearLayout) findViewById(R.id.themeLayout);
         ly.setGravity(Gravity.CENTER);
         ArrayList<String> Topics = new ArrayList<String>();

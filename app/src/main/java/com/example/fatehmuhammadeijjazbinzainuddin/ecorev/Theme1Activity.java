@@ -19,12 +19,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class Theme1Activity extends AppCompatActivity {
-
+    public user currUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_theme1);
-
+        currUser = (user)getIntent().getParcelableExtra("currUser");
         LinearLayout ly = (LinearLayout) findViewById(R.id.themeLayout);
        ly.setGravity(Gravity.CENTER);
        ArrayList<String> Topics = new ArrayList<String>();
@@ -113,6 +113,7 @@ public class Theme1Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Theme1Activity.this,QuizView.class);
                 intent.putExtra("theme", theme);
+                intent.putExtra("currUser",currUser);
                 startActivity(intent);
             }
         });

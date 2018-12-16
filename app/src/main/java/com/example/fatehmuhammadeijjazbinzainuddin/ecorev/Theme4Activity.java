@@ -18,11 +18,12 @@ import android.webkit.WebView;
 import java.util.ArrayList;
 
 public class Theme4Activity extends AppCompatActivity {
+    public user currUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_theme4);
-
+        currUser = (user)getIntent().getParcelableExtra("currUser");
        LinearLayout ly = (LinearLayout) findViewById(R.id.themeLayout);
         ly.setGravity(Gravity.CENTER);
         ArrayList<String> Topics = new ArrayList<String>();
@@ -119,6 +120,8 @@ public class Theme4Activity extends AppCompatActivity {
         rl.addView(v);
         rl.addView(tv);
 
+
         ly.addView(rl);
+
     }
 }

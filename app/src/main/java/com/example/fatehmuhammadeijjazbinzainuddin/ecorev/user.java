@@ -76,6 +76,8 @@ public class user implements Parcelable {
         dest.writeString(emailaddress);
         dest.writeInt(ID);
 
+        dest.writeParcelable(marks, flags);
+
     }
 
     public static final Parcelable.Creator<user> CREATOR = new Parcelable.Creator<user>() {
@@ -91,5 +93,8 @@ public class user implements Parcelable {
     private user(Parcel in) {
         username = in.readString();
         password = in.readString();
+        emailaddress = in.readString();
+        ID = in.readInt();
+        this.marks = in.readParcelable(quizscore.class.getClassLoader());
     }
 }
