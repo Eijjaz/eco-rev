@@ -1,16 +1,23 @@
 package com.example.fatehmuhammadeijjazbinzainuddin.ecorev;
 
 import android.content.Context;
+import android.os.Build;
 import android.security.keystore.UserNotAuthenticatedException;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +34,8 @@ public class userledger {
         users = new ArrayList<user>();
         filename = _filename;
         context = _context;
-        readdatabase();
+        //DuplicateAsset();
+        //readdatabase();
 
     }
 
@@ -49,20 +57,47 @@ public class userledger {
         }
         return null;
     }
-    public void createuser(user u)
+    public void addUser(String username, String password,String email)
     {
-        users.add(u);
+        users.add(new user(users.size(),username,password,email,"",new quizscore(0,0,0,0)));
+        writeToDatabase();
     }
+
+    public void DuplicateAsset()
+    {
+        File newFile =  new File( context.getFilesDir(),filename);//new File(filename);
+
+            try {
+                InputStream in = context.getAssets().open(filename);
+                OutputStream out = new FileOutputStream(newFile);
+                try {
+                    // Transfer bytes from in to out
+                    byte[] buf = new byte[1024];
+                    int len;
+                    while ((len = in.read(buf)) > 0) {
+                        out.write(buf, 0, len);
+                    }
+                } finally {
+                    out.close();
+                }
+            } catch (IOException e)
+            {
+
+            }finally {
+
+            }
+
+
+
+    }
+
 
     public void readdatabase()
     {
-        File file = new File(filename);
-        //Read text from file
-        StringBuilder text = new StringBuilder();
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(
-                    new InputStreamReader(context.getAssets().open(filename)));
+                    new InputStreamReader(new FileInputStream( new File( context.getFilesDir(),filename))));
             String mline;
             int count = 0;
 
@@ -80,6 +115,38 @@ public class userledger {
         catch (IOException e) {
             Log.d("CREATION",e.getMessage());
             //You'll need to add proper error handling here
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void writeToDatabase()
+    {
+        File newFile = new File( context.getFilesDir(),filename);//context.getFileStreamPath(filename);//new File(filename);
+        if (newFile.exists())
+        {
+            try {
+                //InputStream in = context.getAssets().open(filename);
+                OutputStream out = new FileOutputStream(newFile);
+
+                try {
+                    for (user s:
+                            users) {
+                        byte[] dd = (s.dataToString()+"\n").getBytes(StandardCharsets.UTF_8);
+                        out.write(dd,0,dd.length);
+                    }
+                    // Transfer bytes from in to out
+                  //  byte[] buf = new byte[1024];
+                    //int len;
+                    //while ((len = in.read(buf)) > 0) {
+
+                    //}
+                } finally {
+                    out.close();
+                }
+            } catch (IOException e)
+            {
+
+            }
         }
     }
 

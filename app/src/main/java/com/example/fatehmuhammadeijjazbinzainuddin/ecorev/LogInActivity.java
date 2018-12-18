@@ -6,6 +6,7 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.SingleLineTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,7 +24,24 @@ public class LogInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
         this.getWindow().getDecorView().setBackgroundColor(Color.parseColor("white"));
 
+        boolean isNew = false;
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            if (extras.containsKey("fromSignup")) {
+                isNew = extras.getBoolean("fromSignup", false);
+
+            }
+        }
         ul = new userledger("userpassword.txt",this);
+
+        if (!isNew)
+        {
+            ul.DuplicateAsset();
+        }
+
+        ul.readdatabase();
+
+
         Button Loginbutton  = (Button) findViewById(R.id.ButtonLogin);
         Loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +66,17 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
+        final Button SignUpButt = (Button) findViewById(R.id.ButtonSignUp);
+        SignUpButt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    Intent intent = new Intent(LogInActivity.this,Signup.class);
+                    startActivity(intent);
+
+
+            }
+        });
     }
 
 }

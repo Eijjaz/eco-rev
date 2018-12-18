@@ -32,6 +32,11 @@ public class user implements Parcelable {
         picture = _picture;
         marks = q;
     }
+
+    public String dataToString()
+    {
+        return String.valueOf(ID) + ","+username+ ","+password+","+emailaddress+","+marks.marks.get(0)+","+marks.marks.get(1)+","+marks.marks.get(2)+","+marks.marks.get(3);
+    }
 //methods
     public void changename(String _newusername)
     {
