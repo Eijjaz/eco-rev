@@ -1,5 +1,7 @@
 package com.example.fatehmuhammadeijjazbinzainuddin.ecorev;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.ConsoleMessage;
@@ -55,6 +58,7 @@ public class QuizView extends AppCompatActivity {
         CreateQuestion();
         LinearLayout ly = (LinearLayout) findViewById(R.id.contentLayout);
         LinearLayout hly = new LinearLayout(this);
+        hly.setId(300);
         hly.setOrientation(LinearLayout.HORIZONTAL);
 
         mybuttNext = new Button(this);
@@ -65,15 +69,16 @@ public class QuizView extends AppCompatActivity {
                     quesNum++;
                     SetAllAnswerToBlack();
                     CreateQuestion();
+                    answered = false;
+                    mybuttNext.setEnabled(false);
+                    SetAllAnswerToBlack();
                 }
                 else{
                     DeleteQuest();
 
                 }
 
-                answered = false;
-                mybuttNext.setEnabled(false);
-                SetAllAnswerToBlack();
+
             }
         });
         mybuttNext.setText("Next");
@@ -199,7 +204,7 @@ public class QuizView extends AppCompatActivity {
 
                         answered = true;
                         mybuttNext.setEnabled(true);
-                        if (quesNum == NUM_QUES) {
+                        if (quesNum == NUM_QUES+1) {
                             mybuttNext.setText("End");
                         }
                     }
@@ -236,8 +241,26 @@ public class QuizView extends AppCompatActivity {
         String t = "Your total marks is " + currUser.marks.marks.get(themeid).toString() ;
         tv.setText(t);
 
-    }
+        Context c = this;
 
+        mybuttNext.setText("done");
+
+        mybuttNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              //finishActivity(0);
+                returnFunc();
+            }
+        });
+        mybuttNext.setEnabled(true);
+
+        LinearLayout hly = (LinearLayout) findViewById(300);
+        hly.setGravity(Gravity.CENTER_HORIZONTAL);
+    }
+    public void returnFunc()
+    {
+        this.finish();
+    }
     public void CreateQuestion() {
         WebView wv = findViewById(wvid);//new WebView(this);
         wv.loadUrl("file:///android_asset/" + "ques_" + theme + "_" + String.valueOf(quesNum) + ".html");
