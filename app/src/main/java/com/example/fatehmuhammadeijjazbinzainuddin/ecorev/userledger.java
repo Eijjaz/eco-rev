@@ -34,8 +34,6 @@ public class userledger {
         users = new ArrayList<user>();
         filename = _filename;
         context = _context;
-        //DuplicateAsset();
-        //readdatabase();
 
     }
 
@@ -107,25 +105,21 @@ public class userledger {
                 quizscore q = new quizscore(Integer.parseInt(lines[4]),Integer.parseInt(lines[5]),Integer.parseInt(lines[6]),Integer.parseInt(lines[7]));
                 user u = new user(Integer.parseInt(lines[0]),lines[1],lines[2],lines[3],"",q);
                 users.add(u);
-                //users.put(lines[0],lines[1]);
-
             }
 
         }
         catch (IOException e) {
             Log.d("CREATION",e.getMessage());
-            //You'll need to add proper error handling here
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void writeToDatabase()
     {
-        File newFile = new File( context.getFilesDir(),filename);//context.getFileStreamPath(filename);//new File(filename);
+        File newFile = new File( context.getFilesDir(),filename);
         if (newFile.exists())
         {
             try {
-                //InputStream in = context.getAssets().open(filename);
                 OutputStream out = new FileOutputStream(newFile);
 
                 try {
@@ -134,12 +128,7 @@ public class userledger {
                         byte[] dd = (s.dataToString()+"\n").getBytes(StandardCharsets.UTF_8);
                         out.write(dd,0,dd.length);
                     }
-                    // Transfer bytes from in to out
-                  //  byte[] buf = new byte[1024];
-                    //int len;
-                    //while ((len = in.read(buf)) > 0) {
-
-                    //}
+                    
                 } finally {
                     out.close();
                 }

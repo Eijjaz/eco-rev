@@ -20,27 +20,6 @@ import android.graphics.Color;
 
 public class MainActivity extends AppCompatActivity {
     public user currUser;
-    private TextView mTextMessage;
-public CustomView cv;
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,8 +110,6 @@ public CustomView cv;
                 startActivity(intent);
             }
         });
-//        t3image.getLayoutParams().width = 800;
-//        t3image.getLayoutParams().height  = 800;
 
         FrameLayout theme4lay = (FrameLayout) findViewById(R.id.theme4);
         TextView t4title = (TextView) theme4lay.findViewById(R.id.titleBox);
@@ -159,23 +136,6 @@ public CustomView cv;
                 startActivity(intent);
             }
         });
-//        t1image.setImageURI();
-
-//        ImageView im = (ImageView) findViewById(R.id.theme1Img);
-//        im.setClipToOutline(true);
-
-//        RelativeLayout rl = (RelativeLayout) findViewById(R.id.theme1layout);
-//
-//        rl.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this,Theme1Activity.class);
-//                startActivity(intent);
-//            }
-//        });
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
     }
 

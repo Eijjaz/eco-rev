@@ -30,15 +30,15 @@ import java.io.InputStreamReader;
 
 
 public class QuizView extends AppCompatActivity {
-    public String theme = ""; // or other values
-    public int quesNum = 1;
-    public int wvid = 1;
-    public int ans = 0;
-    public user currUser;
-    public boolean answered;
-    public Button mybuttNext;
-    static public int NUM_QUES = 5;
-    public int themeid=0;
+    private String theme = ""; // or other values
+    private int quesNum = 1;
+    private int wvid = 1;
+    private int ans = 0;
+    private user currUser;
+    private boolean answered;
+    private Button mybuttNext;
+    static private int NUM_QUES = 5;
+    private int themeid=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,45 +84,15 @@ public class QuizView extends AppCompatActivity {
         mybuttNext.setText("Next");
         mybuttNext.setEnabled(false);
 
-//        Button mybuttPrev = new Button(this);
-//        mybuttPrev.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (quesNum >= 1)
-//                {
-//                    quesNum--;
-//                    SetAllAnswerToBlack();
-//                    CreateQuestion();
-//                }
-//            }
-//        });
-//        mybuttPrev.setText("Previous");
-//        //RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)mybuttNext.getLayoutParams();
-//        //params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-//        //mybuttNext.setLayoutParams(params);
-//
-//        hly.addView(mybuttPrev);
+
         hly.addView(mybuttNext);
         ly.addView(hly);
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
     }
 
     public void CreateFramework() {
         WebView wv = new WebView(this);
         wv.setId(wvid);
-        //wv = (WebView) findViewById(R.id.webView1);
-        //wv.loadUrl("file:///android_asset/"+"ques_"+theme+"_"+String.valueOf(quesNum) + ".html");
 
         LinearLayout ly = (LinearLayout) findViewById(R.id.contentLayout);
         ly.addView(wv);

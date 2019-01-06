@@ -70,19 +70,13 @@ public class user implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-//        public String username;
-//        public String password;
-//        public String emailaddress;
-//        public int ID;
-//        public String picture;
-//        public quizscore marks;
+
         dest.writeString(username);
         dest.writeString(password);
         dest.writeString(emailaddress);
         dest.writeInt(ID);
 
         dest.writeParcelable(marks, flags);
-
     }
 
     public static final Parcelable.Creator<user> CREATOR = new Parcelable.Creator<user>() {
