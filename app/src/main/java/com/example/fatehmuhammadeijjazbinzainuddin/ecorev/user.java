@@ -38,19 +38,19 @@ public class user implements Parcelable {
         return String.valueOf(ID) + ","+username+ ","+password+","+emailaddress+","+marks.marks.get(0)+","+marks.marks.get(1)+","+marks.marks.get(2)+","+marks.marks.get(3);
     }
 //methods
-    public void changename(String _newusername)
+    public void setName(String _newusername)
     {
         username = _newusername;
     }
-    public void changepassword(String _newpassword)
+    public void setPassword(String _newpassword)
     {
         password = _newpassword;
     }
-    public void changeemail(String _newemailaddress)
+    public void setEmail(String _newemailaddress)
     {
         emailaddress = _newemailaddress;
     }
-    public void changepicture(String _newpicture)
+    public void setPicture(String _newpicture)
     {
         picture = _newpicture;
     }

@@ -204,8 +204,6 @@ public class QuizView extends AppCompatActivity {
 
             }
 
-
-
         TextView tv = findViewById(2);
         //int rr = Integer.valueOf(theme.substring(1,2));
         String t = "Your total marks is " + currUser.marks.marks.get(themeid).toString() ;
@@ -227,10 +225,12 @@ public class QuizView extends AppCompatActivity {
         LinearLayout hly = (LinearLayout) findViewById(300);
         hly.setGravity(Gravity.CENTER_HORIZONTAL);
     }
+
     public void returnFunc()
     {
         this.finish();
     }
+    
     public void CreateQuestion() {
         WebView wv = findViewById(wvid);//new WebView(this);
         wv.loadUrl("file:///android_asset/" + "ques_" + theme + "_" + String.valueOf(quesNum) + ".html");
